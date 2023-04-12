@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', function(){
         var share_button=document.querySelector(".share_text");
         if(t<now-s){
             message.textContent=Math.floor(t/3600)+"時間おべんつよがんばった🎉🎊";
-            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&url=https://おべんつよ.com&text=おべんつよ"+message.textContent;
+            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&url=https://おべんつよ.com&text="+message.textContent;
         }
         else{
             var goal=t-now+s;
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', function(){
             }
             text="あと"+text+"! 頑張って!!";
             message.textContent=text;
-            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text=おべんつよ"+text+"&url=https://おべんつよ.com?s="+s.toString(32)+"%26t="+t.toString(32);
+            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+text+"&url=https://おべんつよ.com?s="+s.toString(32)+"%26t="+t.toString(32);
         }
     }
 
@@ -47,7 +47,7 @@ function update_link(){
     let now=Math.floor(Date.now()/1000);
     console.log(time_input.value);
     variable_time.textContent=time_input.value+"時間おべんつよ";
-    variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text=おべんつよ"+variable_time.textContent+"&url=https://おべんつよ.com?s="+now.toString(32)+"%26t="+(parseInt(time_input.value,10)*3600).toString(32);
+    variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+variable_time.textContent+"&url=https://おべんつよ.com?s="+now.toString(32)+"%26t="+(parseInt(time_input.value,10)*3600).toString(32);
 }
 
 function getParam(name,url){
