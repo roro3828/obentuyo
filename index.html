@@ -1,1 +1,31 @@
-Test
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>おべんつよ</title>
+        <meta name="twitter:card" content="summary_large_Image"></meta>
+        <meta property="og:url" content="https://おべんつよ.com"/>
+        <meta property="og:title" content="おべんつよ"/>
+        <meta property="og:description" content="おべんつよがんばる人向け"/>
+        <meta property="og:image" content="https://xn--t8j9b0czctc.com/img/obentuyo.png"/>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/main.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+
+    <body>
+        <h1>おべんつよ💪✏</h1>
+        <div class="message"></div>
+        <p><a class="tw_share share_text" href="https://twitter.com/share?text=おべんつよ%0D%0A%23おべんつよ%0D%0A&url=https://おべんつよ.com" target="_blank">ツイート</a></p>
+        <div id="time_input">
+            <p><input class="input_time" type="number" min="0" pattern="^[0-9]+$" value="1" oninput="update_link()"></p>
+            <p><a class="tw_share variable_time" href="" target="_blank" onclick="update_link()">1時間おべんつよ</a></p>
+        </div>
+        <br>
+        <footer class="hidden">
+            <p>フォローしろ</p>
+            <a href="https://twitter.com/66_3828" class="twitter-follow-button" data-show-count="true" data-lang="ja">ふぉろーしろ</a>
+        </footer>
+    </body>
+    <script src="scripts/main.js"></script>
+</html>
