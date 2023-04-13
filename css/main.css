@@ -27,6 +27,17 @@ img.emoji{
     background-color: #3474be;
 }
 
+h1,
+a,
+p,
+input{
+    font-family: sans-serif;
+}
+
+.input_time{
+    font-size: medium;
+}
+
 .hidden{
     display: none;
 }

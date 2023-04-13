@@ -51,11 +51,20 @@ window.addEventListener('DOMContentLoaded', function(){
 
 function update_link(){
     let time_input=document.querySelector(".input_time");
+
+    let t=time_input.value.split(":");
+    let h=0;
+    let m=0;
+    if(t.length==2){
+        h=parseInt(t[0]);
+        m=parseInt(t[1]);
+    }
+
     let variable_time=document.querySelector(".variable_time");
     let now=Math.floor(Date.now()/1000);
-    console.log(time_input.value);
-    variable_time.textContent=time_input.value+"時間おべんつよ";
-    variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+variable_time.textContent+"&url=https://おべんつよ.com/?s="+now.toString(32)+"%26t="+(parseInt(time_input.value,10)*3600).toString(32);
+
+    variable_time.textContent=strftime(h*3600+m*60)+"おべんつよ";
+    variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+variable_time.textContent+"&url=https://おべんつよ.com/?s="+now.toString(32)+"%26t="+(h*3600+m*60).toString(32);
 }
 
 function strftime(time,show_s_anyway=false){
