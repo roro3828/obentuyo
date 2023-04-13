@@ -1,44 +1,38 @@
 window.addEventListener('DOMContentLoaded', function(){
 
     update_link();
-
-    var t=getParam("t");
-    var s=getParam("s");
-    if(t && s){
-
-        document.querySelector("#time_input").className="hidden";
-
-        t=parseInt(t,32);
-        s=parseInt(s,32);
-        var now=Math.floor(Date.now()/1000);
-        var message=document.querySelector(".message");
-        var share_button=document.querySelector(".share_text");
-        if(t<now-s){
-            message.textContent=Math.floor(t/3600)+"時間おべんつよがんばった🎉🎊";
-            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&url=https://おべんつよ.com&text="+message.textContent;
-        }
-        else{
-            var goal=t-now+s;
-            var text="";
-            if(Math.floor(goal/3600)){
-                text=Math.floor(goal/3600)+"時間";
-                goal%=3600;
-            }
-            if(Math.floor(goal/60)){
-                text+=Math.floor(goal/60)+"分";
-            }
-            text="あと"+text+"! 頑張って!!";
-            message.textContent=text;
-            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+text+"&url=https://おべんつよ.com?s="+s.toString(32)+"%26t="+t.toString(32);
-        }
-    }
-
     if(true){
         twemoji.parse(document.body,{
             folder: 'svg',
             ext: '.svg'
         });
     }
+
+    var t=getParam("t");
+    var s=getParam("s");
+    if(t && s){
+
+        document.querySelector("#time_input").className="hidden";
+        t=parseInt(t,32);
+        s=parseInt(s,32);
+        let message=document.querySelector(".message");
+        let share_button=document.querySelector(".share_text");
+
+        setInterval(() => {
+            let now=Math.floor(Date.now()/1000);
+            if(t<now-s){
+                message.textContent=strftime(t)+"おべんつよがんばった🎉🎊";
+                share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&url=https://おべんつよ.com&text="+message.textContent;
+            }
+            else{
+                let goal=t-now+s;
+                let text="あと"+strftime(goal)+"! 頑張って!!";
+                message.textContent=text;
+                share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+text+"&url=https://おべんつよ.com?s="+s.toString(32)+"%26t="+t.toString(32);
+            }
+        },1000);
+    }
+
 });
 
 function update_link(){
@@ -48,6 +42,27 @@ function update_link(){
     console.log(time_input.value);
     variable_time.textContent=time_input.value+"時間おべんつよ";
     variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+variable_time.textContent+"&url=https://おべんつよ.com?s="+now.toString(32)+"%26t="+(parseInt(time_input.value,10)*3600).toString(32);
+}
+
+function strftime(time,show_s_anyway=false){
+    let text="";
+
+    let h=Math.floor(time/3600);
+    let m=Math.floor((time%3600)/60);
+    let s=time%60;
+    if(h){
+        text+=h+"時間";
+    }
+    if(m){
+        text+=m+"分";
+    }
+    if(show_s_anyway){
+        text+=s+"秒";
+    }
+    else if(!(h || m)){
+        text+=s+"秒";
+    }
+    return text;
 }
 
 function getParam(name,url){
