@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function(){
         let now=Math.floor(Date.now()/1000);
         if(t<now-s){
             message.textContent=strftime(t)+"おべんつよがんばった🎉🎊";
-            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&url=https://おべんつよ.com/&text="+message.textContent;
+            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.roro.icu/&url=https://おべんつよ.roro.icu/&text="+message.textContent;
 
             twemoji.parse(document.body,{
                 folder: 'svg',
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function(){
             let goal=t-now+s;
             let text="あと"+strftime(goal)+"! 頑張って!!";
             message.textContent=text;
-            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+text+"&url=https://おべんつよ.com/?s="+s.toString(32)+"%26t="+t.toString(32);
+            share_button.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.roro.icu/&text="+text+"&url=https://おべんつよ.roro.icu/?s="+s.toString(32)+"%26t="+t.toString(32);
             return true;
         }
     }
@@ -64,7 +64,7 @@ function update_link(){
     let now=Math.floor(Date.now()/1000);
 
     variable_time.textContent=strftime(h*3600+m*60)+"おべんつよ";
-    variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.com/&text="+variable_time.textContent+"&url=https://おべんつよ.com/?s="+now.toString(32)+"%26t="+(h*3600+m*60).toString(32);
+    variable_time.href="https://twitter.com/intent/tweet?hashtags=おべんつよ&original_referer=https://おべんつよ.roro.icu/&text="+variable_time.textContent+"&url=https://おべんつよ.roro.icu/?s="+now.toString(32)+"%26t="+(h*3600+m*60).toString(32);
 }
 
 function strftime(time,show_s_anyway=false){
